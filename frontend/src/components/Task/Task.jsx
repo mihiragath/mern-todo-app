@@ -82,7 +82,7 @@ function Task({ task, id }) {
   const handleSave = async () => {
     if (editTitle.trim() && editDescription.trim()) {
       try {
-        const res = await axios.put(
+        await axios.put(
           "/task/updateTask",
           {
             id: task._id,

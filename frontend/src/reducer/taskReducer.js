@@ -41,6 +41,9 @@ function taskReducer(tasks, action) {
         return task;
       });
     }
+    default: {
+      return tasks;
+    }
   }
 }
 
