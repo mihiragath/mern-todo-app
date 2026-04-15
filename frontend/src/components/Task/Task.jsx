@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import moment from "moment";
 import "./task.css";
 import { useContext, useState } from "react";
@@ -37,7 +37,7 @@ function Task({ task, id }) {
       // Update local state
       dispatch({
         type: "REMOVE_TASK",
-        id,
+        taskId: task._id,
       });
     } catch (error) {
       console.log("Error removing task:", error);
@@ -66,7 +66,7 @@ function Task({ task, id }) {
       // Update local state
       dispatch({
         type: "MARK_DONE",
-        id,
+        taskId: task._id,
       });
     } catch (error) {
       console.log("Error updating task status:", error);
@@ -99,7 +99,7 @@ function Task({ task, id }) {
         // Update local state
         dispatch({
           type: "UPDATE_TASK",
-          id,
+          taskId: task._id,
           title: editTitle.trim(),
           description: editDescription.trim(),
         });
@@ -208,4 +208,4 @@ function Task({ task, id }) {
   );
 }
 
-export default Task;
+export default memo(Task);

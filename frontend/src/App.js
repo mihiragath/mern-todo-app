@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect, useReducer } from "react";
+import { useEffect, useMemo, useReducer } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Active from "./components/Active";
 import Completed from "./components/Completed";
@@ -20,6 +20,11 @@ function App() {
   const [tasks, dispatch] = useReducer(taskReducer, []);
   const [userToken, tokenDispatch] = useReducer(tokenReducer, token);
   const [user, userDispatch] = useReducer(userReducer, {});
+  const taskValue = useMemo(() => ({ tasks, dispatch }), [tasks]);
+  const tokenValue = useMemo(
+    () => ({ userToken, tokenDispatch, user, userDispatch }),
+    [userToken, user],
+  );
   useEffect(() => {
     console.log("App.js");
     const fetchUser = async () => {

@@ -1,3 +1,4 @@
+import React, { memo } from "react";
 import moment from "moment";
 import { useTheme } from "../context/ThemeContext";
 
@@ -29,4 +30,4 @@ function CompletedTask({ task }) {
   );
 }
 
-export default CompletedTask;
+export default memo(CompletedTask);
